@@ -1,0 +1,23 @@
+http://api.openweathermap.org/geo/1.0/direct?q={city name},{state code},{country code}&limit={limit}&appid={API key}
+
+import './Card.css'
+import 'tachyons'
+const Card = (props) => {
+  if (!props.wdata) return null;
+
+  const { location, current } = props.wdata;
+
+  return (
+    <Fragment>
+      <div className="card grow  white">
+      <h2>{location.name}</h2>
+      <h2>{location.region}</h2>
+      <p>{current.condition.text}</p>
+      <img className='text-center' src={current.condition.icon} alt="weather icon" />
+      <p>Temperature: {current.temp_c}°C</p>
+      <p>Feels like: {current.feelslike_c}°C</p>
+      <p>wind: {current.wind_mph}</p>
+      </div>
+    </Fragment>
+
+
